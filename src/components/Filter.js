@@ -1,10 +1,26 @@
-import React from "react";
+// Filter.js
 
-function Filter({ onCategoryChange }) {
+import React from 'react';
+
+function Filter({ search, onSearchChange, onCategoryChange }) {
+  const handleCategoryChange = (e) => {
+    onCategoryChange(e.target.value);
+  };
+
+  const handleSearchChange = (e) => {
+    onSearchChange(e.target.value);
+  };
+
   return (
     <div className="Filter">
-      <input type="text" name="search" placeholder="Search..." />
-      <select name="filter" onChange={onCategoryChange}>
+      <input
+        type="text"
+        name="search"
+        placeholder="Search..."
+        value={search}
+        onChange={handleSearchChange}
+      />
+      <select name="filter" onChange={handleCategoryChange}>
         <option value="All">Filter by category</option>
         <option value="Produce">Produce</option>
         <option value="Dairy">Dairy</option>
